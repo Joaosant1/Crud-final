@@ -1,0 +1,38 @@
+<x-admin-layout>
+
+<h3 class="text-gray-700 text-3xl font-medium">Registrar manutenção</h3>
+
+
+<form class="max-w-sm mx-auto"  action="{{ route('manutencao.store') }}" method="POST">
+    @csrf
+
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="veiculo_id">Veículo</label>
+    <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="veiculo_id" id="veiculo_id" required>
+        @foreach($veiculos as $veiculo)
+            <option value="{{ $veiculo->id }}">{{ $veiculo->modelo }} - {{ $veiculo->marca }}</option>
+        @endforeach
+    </select>
+    </br>
+
+    <div class="mb-5">
+      <label for="tipo_servico" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de serviço</label>
+      <input type="text" id="tipo_servico" name="tipo_servico" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+  </div>
+  </br>
+
+  <div class="mb-5">
+      <label for="data_manutencao" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de serviço</label>
+      <input type="date" id="data_manutencao" name="data_manutencao" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+  </div>
+  </br>
+  
+  <div class="mb-5">
+      <label for="custo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Custo</label>
+      <input type="number" id="custo" name="custo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+  </div>
+  </br>
+
+  <button class="px-4 py-3 bg-indigo-600 rounded-md text-white font-medium tracking-wide hover:bg-indigo-500" type="submit">Registrar manutenção</button>
+</form>
+
+</x-admin-layout>

@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\VeiculoController;
+use App\Http\Controllers\VendaController;
+use App\Http\Controllers\ManutencaoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +37,20 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/ui-elements', function () {
         return view('admin.ui-elements');
     })->name('admin.ui-elements');
+    Route::get('/veiculos', function () {
+        return view('veiculos.index');
+    })->name('veiculos.index');
+    Route::get('/vendas', function () {
+        return view('vendas.index');
+    })->name('vendas.index');
+    Route::get('/manutencao', function () {
+        return view('manutencao.index');
+    })->name('manutencao.index');
+
+    Route::resource('veiculos', VeiculoController::class);
+    Route::resource('vendas', VendaController::class);
+    Route::resource('manutencao', ManutencaoController::class);
+
  
  });
 
